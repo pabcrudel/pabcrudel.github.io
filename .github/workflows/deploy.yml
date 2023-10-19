@@ -6,35 +6,21 @@ on:
       - main
 
 jobs:
-  build:
+  ci-cd:
     runs-on: ubuntu-latest
-    name: Minify html, css and js files
+    name: Minify & Deploy
+    permissions:
+      contents: write
     steps:
       - name: Checkout files
         uses: actions/checkout@v3
 
-      - name: Use "static-website-minifier-workflow" Action
+      - name: Minify html, css and js files
         uses: pabcrudel/static-website-minifier-workflow@main
         with:
-          project_path: "."
-          artifact_name: "minified-website"
+          project_path: .
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy to GitHub Pages
-    steps:
-      - name: Checkout files
-        uses: actions/checkout@v3
-
-      - name: Download Minified Files
-        uses: actions/download-artifact@v3
-        with:
-          name: minified-website
-          path: dist
-      
-      - name: Use "github-pages-deploy-action" Action
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          folder: dist
-          token: ${{ secrets.TOKEN }}
+          folder: dist  
