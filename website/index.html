@@ -14,17 +14,17 @@
     href="assets/favicon/apple-touch-icon.png"
   >
 
-  <!-- Defines a favicon for browsers with a size of 32x32 pixels,
+  <!-- Defines a favicon for browsers with a size of 32x32 or 16x16 pixels,
     improving visual recognition and branding. -->
   <link rel="icon" type="image/png" sizes="32x32"
     href="assets/favicon/favicon-32x32.png"
   >
-
-  <!-- Provides an additional favicon for browsers with a smaller 16x16
-    pixel icon, catering to various display contexts. -->
   <link rel="icon" type="image/png" sizes="16x16"
     href="assets/favicon/favicon-16x16.png"
   >
+  <!-- Provides a fallback favicon for browsers that don't
+    support the more modern link tag. -->
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
 
   <!-- Links to the web app manifest file, specifying essential
     details for an enhanced user experience. -->
@@ -35,11 +35,7 @@
   <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg"
     color="#5bbad5"
   >
-
-  <!-- Provides a fallback favicon for browsers that don't
-    support the more modern link tag. -->
-  <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-
+  
   <!-- Sets the tile color for Windows' MS Application to enhance
     the web app's appearance on Windows platforms. -->
   <meta name="msapplication-TileColor" content="#da532c">
