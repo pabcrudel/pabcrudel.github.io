@@ -1,9 +1,9 @@
 html {
-  max-width: 1250px;
+  max-width: 80ch;
   margin: auto;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 80ch) {
   html {
     margin: auto 1rem;
   }
