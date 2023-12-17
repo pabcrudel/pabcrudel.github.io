@@ -1,10 +1,5 @@
-html {
+:root {
+  /* Center content to improve legibility */
   max-width: 75ch;
   margin: auto;
-}
-
-@media (max-width: 75ch) {
-  html {
-    margin: auto 1rem;
-  }
 }
