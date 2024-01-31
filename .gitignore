@@ -1,0 +1,8 @@
+# JS dependencies
+node_modules
+
+# Build output files
+dist*
+
+# VSCode folder
+.vscode
