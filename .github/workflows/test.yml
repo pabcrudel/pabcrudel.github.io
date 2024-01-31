@@ -1,0 +1,36 @@
+name: Testing using Vitest
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nextjs
+    paths:
+      - __tests__
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Testing
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install pnpm
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm ci
+
+      - name: Check Linter
+        run: pnpm run lint
+
+      - name: Check code
+        run: pnpm run test
