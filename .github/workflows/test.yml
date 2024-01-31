@@ -6,6 +6,7 @@ on:
     branches:
       - nextjs
     paths:
+      - .github/workflows/test.yml
       - __tests__
 
 jobs:
