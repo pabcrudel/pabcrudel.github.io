@@ -6,3 +6,6 @@ dist*
 
 # VSCode folder
 .vscode
+
+# Nexj.js output folder
+.next
