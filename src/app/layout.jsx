@@ -1,6 +1,8 @@
+import { plexSansClass } from '../fonts/ibm_plex';
+
 export default function RootLayout ({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={plexSansClass}>
       <head>
         <title>Hello, World!</title>
         <link
