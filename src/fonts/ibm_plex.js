@@ -6,7 +6,7 @@ const plexSans = IBM_Plex_Sans({
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
-  fallback: ['SYSTEM-FONT']
+  fallback: ['sans-serif']
 });
 
 export const plexSansClass = plexSans.className;
