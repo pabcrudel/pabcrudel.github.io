@@ -5,6 +5,10 @@
   font-size: 20px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
+
+  /* Center content to improve legibility */
+  max-width: 75ch;
+  margin: auto;
 }
 
 /* Use Serif subfamily on headings */
