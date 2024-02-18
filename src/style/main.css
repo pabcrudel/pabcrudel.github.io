@@ -1,0 +1,13 @@
+:root {
+  /* Font management */
+  font-family: var(--ibm-plex-sans);
+  font-synthesis: none;
+  font-size: 20px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+/* Use Serif subfamily on headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ibm-plex-serif);
+}

@@ -1,13 +1,22 @@
 // eslint-disable-next-line camelcase
-import { IBM_Plex_Sans } from 'next/font/google';
+import { IBM_Plex_Sans, IBM_Plex_Serif } from 'next/font/google';
 
-const plexSans = IBM_Plex_Sans({
+export const plexSans = IBM_Plex_Sans({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
   fallback: ['sans-serif'],
-  adjustFontFallback: false
+  adjustFontFallback: false,
+  variable: '--ibm-plex-sans'
 });
 
-export const plexSansClass = plexSans.className;
+export const plexSerif = IBM_Plex_Serif({
+  weight: ['700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['serif'],
+  adjustFontFallback: false,
+  variable: '--ibm-plex-serif'
+});
