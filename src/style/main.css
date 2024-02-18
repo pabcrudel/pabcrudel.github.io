@@ -9,9 +9,17 @@
   /* Center content to improve legibility */
   max-width: 75ch;
   margin: auto;
+
+  /* Box sizes will include border and paddings */
+  box-sizing: border-box;
 }
 
 /* Use Serif subfamily on headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--ibm-plex-serif);
+}
+
+/* Inherit box sizing to allow rollbacks on any specific section */
+*, *::before, *::after {
+  box-sizing: inherit;
 }
