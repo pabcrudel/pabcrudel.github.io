@@ -1,7 +1,10 @@
+/* Import font families from "fonts" folder */
+@import '../fonts/ibm-plex.css';
+
 :root {
   /* Font management */
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  /* Use Sans subfamily by default */
+  font-family: 'IBM Plex Sans', sans-serif;
   font-synthesis: none;
   font-size: 20px;
   line-height: 1.5;
@@ -13,6 +16,11 @@
   /* Center content to improve legibility */
   max-width: 75ch;
   margin: auto;
+}
+
+/* Use Serif subfamily on headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'IBM Plex Serif', serif;
 }
 
 /* Inherit box sizing to allow rollbacks on any specific section */
