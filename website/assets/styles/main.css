@@ -23,6 +23,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'IBM Plex Serif', serif;
 }
 
+/* Use Mono subfamily on HTML tags that use Mono by default */
+pre, code {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
 /* Inherit box sizing to allow rollbacks on any specific section */
 *, *::before, *::after {
   box-sizing: inherit;
