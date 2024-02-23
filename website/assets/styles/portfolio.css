@@ -63,4 +63,12 @@
       justify-content: space-between;
     }
   }
+
+  @media screen and (min-width: 700px) {
+    /* Override mobile flex rules */
+    body > header {
+      /* Display header children in rows */
+      flex-direction: row;
+    }
+  }
 }
