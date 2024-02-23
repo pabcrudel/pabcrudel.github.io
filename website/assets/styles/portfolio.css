@@ -4,6 +4,13 @@
     display: none;
   }
 
+  /* Center personal brand trademark on mobile */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   /* Styles applied on bigger screens */
   @media screen and (min-width: 1100px) {
 
