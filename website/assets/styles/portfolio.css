@@ -1,0 +1,59 @@
+@supports (display: flex) {
+  /* Hide nav on small devices */
+  body > nav {
+    display: none;
+  }
+
+  /* Styles applied on bigger screens */
+  @media screen and (min-width: 1100px) {
+
+    /* Override rules from root */
+    :root {
+      max-width: unset;
+      margin: unset;
+    }
+
+    body {
+      /* Leave space on the top for the nav
+       * I know that this is not the best idea but I can't place nav on the top
+       * using grid or flex because I couldn't control nav's width.
+       * If you know how to achieve that, please open an issue on github here:
+       * - https://github.com/pabcrudel/pabcrudel.github.io/issues
+      */
+      margin-top: 70px;
+    }
+
+    /* Center content on all children to 75ch unless nav */
+    body > *:not(body nav) {
+      max-width: 75ch;
+      margin: auto;
+    }
+
+    body > nav {
+      /* Display nav on bigger devices */
+      display: block;
+
+      /* Move nav to the top of the page by css */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      /* Center content */
+      max-width: 1100px;
+      padding: 1em;
+      margin: auto;
+    }
+
+    body > nav ul {
+      /* Remove bullet points and default list styles */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      /* Place items in the same row leaving space between them */
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
