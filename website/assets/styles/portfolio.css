@@ -1,4 +1,4 @@
-@supports (display: flex) {
+@supports (display: flex) and (position: absolute) {
   /* Hide nav on small devices */
   body > nav {
     display: none;
@@ -24,7 +24,7 @@
     }
 
     /* Center content on all children to 75ch unless nav */
-    body > *:not(body nav) {
+    body > *:not(nav) {
       max-width: 75ch;
       margin: auto;
     }
