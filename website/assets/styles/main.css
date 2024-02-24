@@ -176,46 +176,4 @@ pre, code {
       color: #a80000; /* 7.23 */
     }
   }
-
-  /* Styles applied to the footer */
-  @supports (display: grid) and (position: absolute) {
-    footer {
-      /* Display a simple shadow to separate footer visually */
-      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-
-      /* Leave space depending on the font size */
-      margin-top: 2em;
-
-      /* Expand footer on both sides to display the shadow correctly */
-      position: absolute;
-      left: 0;
-      right: 0;
-    }
-    
-    footer > * {
-      /* Center content like the body text */
-      max-width: var(--max-width);
-      margin: auto;
-    }
-
-    /* Place children in columns that will stretch to fit the available space.*/
-    footer > div {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    /* Copyright section will be centered */
-    footer > aside {
-      text-align: center;
-    }
-
-    /* Display a line on top of Copyright section which color depends on the
-    preferred color schema. Also specify margin to separate it. */
-    footer > aside::before {
-      content: "";
-      display: block;
-      border-top: 1px solid;
-      margin: 2em 0 1em;
-    }
-  }
 }
