@@ -38,31 +38,31 @@ pre, code {
 site, then this styles get disabled */
 @media screen {
   :root {
-    /* Custom colors for black and white */
+    /* Palette of Colors */
     --black: #333;
     --white: #f5f5f5;
 
     /* By default, this website will be in Dark Mode */
     color: var(--white);
     background-color: var(--black);
+
+    /* Contrast Ratio source: https://webaim.org/resources/contrastchecker/
+     * - Values calculated with var(--black) as `background-color`.
+    */
+    --primary: #FFB224;    /* 7.1 */
+    --secondary: coral;    /* 5.05 */
+    --tertiary: lightblue; /* 8.27 */
   }
 
-  /* Contrast Ratio source: https://webaim.org/resources/contrastchecker/
-   * - It depends on #333 as `background-color`.
-  */
+  /* Colors applied to anchors depending on their states */
   a:link {
-    /* Default color with 7.1 of Contrast Ratio */
-    color: #FFB224;
+    color: var(--primary);
   }
-
   a:visited {
-    /* Visited color with 5.05 of Contrast Ratio. */
-    color: coral;
+    color: var(--secondary);
   }
-
   a:active {
-    /* Color applied when clicking with 8.27 of Contrast Ratio. */
-    color: lightblue;
+    color: var(--tertiary);
   }
 
   @media (prefers-color-scheme: light) {
@@ -72,21 +72,16 @@ site, then this styles get disabled */
       background-color: var(--white);
     }
 
-    /* Select link colors mirror the default Firefox ones,
-     * tailored for contrast with the background color #f5f5f5. */
+    /* Select link colors mirror the default ones,
+     * tailored for contrast with the background color var(--white). */
     a:link {
-      /* Default color with 7.04 of Contrast Ratio */
-      color: #0052A3;
+      color: #0052A3; /* 7.04 */
     }
-  
     a:visited {
-      /* Visited color with 7.11 of Contrast Ratio. */
-      color: #7324BC;
+      color: #7324BC; /* 7.11 */
     }
-  
     a:active {
-      /* Active color with 7.23 of Contrast Ratio. */
-      color: #a80000;
+      color: #a80000; /* 7.23 */
     }
   }
 
