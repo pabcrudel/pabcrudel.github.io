@@ -17,8 +17,10 @@ jobs:
   ci-cd:
     runs-on: ubuntu-latest
     name: Minify & Deploy
+
     permissions:
       contents: write
+
     steps:
       - name: Checkout files
         uses: actions/checkout@v3
