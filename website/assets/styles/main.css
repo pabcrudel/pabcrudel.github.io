@@ -32,3 +32,60 @@ pre, code {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+/* Text and background color will only apply on screens. If the user print this
+site, then this styles get disabled */
+@media screen {
+  :root {
+    /* Custom colors for black and white */
+    --black: #333;
+    --white: #f5f5f5;
+
+    /* By default, this website will be in Dark Mode */
+    color: var(--white);
+    background-color: var(--black);
+  }
+
+  /* Contrast Ratio source: https://webaim.org/resources/contrastchecker/
+   * - It depends on #333 as `background-color`.
+  */
+  a:link {
+    /* Default color with 7.1 of Contrast Ratio */
+    color: #FFB224;
+  }
+
+  a:visited {
+    /* Visited color with 5.05 of Contrast Ratio. */
+    color: coral;
+  }
+
+  a:active {
+    /* Color applied when clicking with 8.27 of Contrast Ratio. */
+    color: lightblue;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      /* Palette of colors in Light Mode swaps Text and Background colors */
+      color: var(--black);
+      background-color: var(--white);
+    }
+
+    /* Select link colors mirror the default Firefox ones,
+     * tailored for contrast with the background color #f5f5f5. */
+    a:link {
+      /* Default color with 7.04 of Contrast Ratio */
+      color: #0052A3;
+    }
+  
+    a:visited {
+      /* Visited color with 7.11 of Contrast Ratio. */
+      color: #7324BC;
+    }
+  
+    a:active {
+      /* Active color with 7.23 of Contrast Ratio. */
+      color: #a80000;
+    }
+  }
+}
