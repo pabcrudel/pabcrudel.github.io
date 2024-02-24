@@ -112,20 +112,18 @@ site, then this styles get disabled */
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    /* Copyright section will be centered and have some space on top depending
-    on the font size */
+    /* Copyright section will be centered */
     footer > aside {
-      padding-top: 1em;
-      margin-top: 2em;
       text-align: center;
     }
 
     /* Display a line on top of Copyright section which color depends on the
-    preferred color schema */
+    preferred color schema. Also specify margin to separate it. */
     footer > aside::before {
       content: "";
       display: block;
       border-top: 1px solid;
+      margin: 2em 0 1em;
     }
   }
 }
