@@ -69,13 +69,14 @@
 
     /* Leave space depending on the font size */
     margin-top: 2em;
+    padding: 0 .5em;
 
     /* Expand footer on both sides to display the shadow correctly */
     position: absolute;
     left: 0;
     right: 0;
   }
-  
+
   footer > * {
     /* Center content like the body text */
     max-width: var(--max-width);
