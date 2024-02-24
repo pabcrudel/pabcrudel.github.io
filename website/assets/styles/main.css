@@ -34,8 +34,7 @@ pre, code {
   box-sizing: inherit;
 }
 
-/* Text and background color will only apply on screens. If the user print this
-site, then this styles get disabled */
+/* If the user print this site, then this styles get disabled */
 @media screen {
   :root {
     /* Palette of Colors */
