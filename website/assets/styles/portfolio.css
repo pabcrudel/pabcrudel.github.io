@@ -11,7 +11,7 @@
     align-items: center;
   }
 
-  /* Styles applied on bigger screens */
+  /* Styles related to nav applied on bigger screens */
   @media screen and (min-width: 1100px) {
     body {
       /* Leave space on the top for the nav
@@ -52,6 +52,7 @@
     }
   }
 
+  /* Styles related to header applied on bigger screens */
   @media screen and (min-width: 700px) {
     /* Override mobile flex rules */
     body > header {
