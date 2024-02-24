@@ -13,13 +13,6 @@
 
   /* Styles applied on bigger screens */
   @media screen and (min-width: 1100px) {
-
-    /* Override rules from root */
-    :root {
-      max-width: unset;
-      margin: unset;
-    }
-
     body {
       /* Leave space on the top for the nav
        * I know that this is not the best idea but I can't place nav on the top
@@ -28,12 +21,6 @@
        * - https://github.com/pabcrudel/pabcrudel.github.io/issues
       */
       margin-top: 70px;
-    }
-
-    /* Center content on all children to 75ch unless nav */
-    body > *:not(nav) {
-      max-width: 75ch;
-      margin: auto;
     }
 
     body > nav {
