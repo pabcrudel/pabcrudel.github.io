@@ -9,6 +9,10 @@ on:
       - website/**
       - .github/workflows/deploy.yml
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   ci-cd:
     runs-on: ubuntu-latest
