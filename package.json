@@ -6,6 +6,18 @@
   "author": "Pablo Cru Delhom (pabcrudel)",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/sitemap": "^3.1.1",
+    "astro": "^4.5.6",
+    "sharp": "^0.33.2",
+    "typescript": "^5.4.2"
   }
 }
