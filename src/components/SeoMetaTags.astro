@@ -1,0 +1,30 @@
+---
+import { z } from "astro:content";
+
+const SeoMetaTagsSchema = z.object({
+  title: z
+    .string()
+    .max(60)
+    .default("Pablo Cru Delhom - Full Stack Web Developer"),
+  description: z.string().max(160).default("Web portfolio powered by Astro"),
+});
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title, description } = SeoMetaTagsSchema.parse(Astro.props);
+---
+
+{/* Primary Meta Tags */}
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="Pablo Cru Delhom" />
+
+{/* Canonical URL */}
+<link rel="canonical" href={Astro.url} />
+
+{/* Improve crawlers index */}
+<link rel="sitemap" href="/sitemap-index.xml" />
