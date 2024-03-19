@@ -6,7 +6,7 @@ const SeoMetaTagsSchema = z.object({
     .string()
     .max(60)
     .default("Pablo Cru Delhom - Full Stack Web Developer"),
-  description: z.string().max(160).default("Web portfolio powered by Astro"),
+  description: z.string().max(160).default("Web portfolio powered by Astro")
 });
 
 type Props = {
