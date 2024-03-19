@@ -1,9 +1,55 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-
-const title = "Hello World";
+import Image from "astro/components/Image.astro";
+import svgCover from "../../public/images/pabcrudel-ico-circle.svg";
 ---
 
-<BaseLayout title={title}>
-  <h1>{title}</h1>
+<BaseLayout>
+  <header>
+    <Image
+      src={svgCover}
+      width="350"
+      loading="eager"
+      alt="Pablo Cru's personal brand trademark"
+    />
+    <section id="about-me">
+      <h1 id="pabcrudel">Pablo Cru Delhom</h1>
+      <h2>Full Stack Web Developer</h2>
+      <p>
+        I like to create <strong>solid website applications</strong> focused on
+        reliability and scalability following good practices. Non stop improving
+        my programming skills <cite>
+          <a
+            href="https://www.swyx.io/learn-in-public"
+            title="SWYX's Learning Philosophy">learning in public</a
+          ></cite
+        > on my
+        <a
+          href="https://github.com/pabcrudel"
+          title="Take a look at my repositories">GitHub profile</a
+        >.
+      </p>
+    </section>
+  </header>
 </BaseLayout>
+
+<style>
+  @supports (display: flex) and (position: absolute) {
+    /* Center personal brand trademark on mobile */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Styles related to header applied on bigger screens */
+    @media screen and (min-width: 700px) {
+      /* Override mobile flex rules */
+      body > header {
+        /* Display header children in rows */
+        flex-direction: row;
+        gap: 1em;
+      }
+    }
+  }
+</style>
