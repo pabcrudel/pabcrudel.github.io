@@ -12,7 +12,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --ext js,ts,cjs,astro"
+    "lint": "astro check && eslint . --ext js,ts,cjs,astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
