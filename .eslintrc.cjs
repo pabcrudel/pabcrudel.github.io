@@ -27,5 +27,8 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     quotes: ["error", "double"]
-  }
+  },
+  ignorePatterns: [
+    "env.d.ts"
+  ]
 };
