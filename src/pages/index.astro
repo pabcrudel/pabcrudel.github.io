@@ -1,15 +1,13 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Image from "astro/components/Image.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
 ---
 
 <BaseLayout>
   <header>
-    <Image
-      src={svgCover}
+    <img
+      src={svgCover.src}
       width="350"
-      loading="eager"
       alt="Pablo Cru's personal brand trademark"
     />
     <section id="about-me">
