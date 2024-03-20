@@ -1,0 +1,25 @@
+name: Pablo Cru Delhom
+label: Full Stack Web Developer
+email: contacto.pablocru@gmail.com
+location:
+  city: Valencia
+  country: Spain
+socialMediaLinks:
+  - github
+  - linkedin
+works:
+  - datarmony
+  - aspromanis
+education:
+  - programming
+  - marketing
+skills:
+  - HTML
+  - CSS
+  - JavaScript
+languages:
+  - spanish
+  - english
+projects:
+  - fire-spotter
+  - javascript-challenges
