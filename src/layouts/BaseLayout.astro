@@ -1,7 +1,9 @@
 ---
 import Favicon from "@components/Favicon.astro";
 import GlobalStyle from "@components/GlobalStyle.astro";
-import SeoMetaTags from "@components/SeoMetaTags.astro";
+import SeoMetaTags, { type Props } from "@components/SeoMetaTags.astro";
+
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,7 +12,7 @@ import SeoMetaTags from "@components/SeoMetaTags.astro";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <SeoMetaTags {...Astro.props}/>
+    <SeoMetaTags description={description} title={title}/>
     <Favicon/>
     <GlobalStyle/>
   </head>
