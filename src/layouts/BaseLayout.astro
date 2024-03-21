@@ -2,6 +2,7 @@
 import Favicon from "@components/Favicon.astro";
 import GlobalStyle from "@components/GlobalStyle.astro";
 import SeoMetaTags, { type Props } from "@components/SeoMetaTags.astro";
+import Footer from "@components/Footer.astro";
 
 const { description, title } = Astro.props;
 ---
@@ -12,11 +13,12 @@ const { description, title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <SeoMetaTags description={description} title={title}/>
-    <Favicon/>
-    <GlobalStyle/>
+    <SeoMetaTags description={description} title={title} />
+    <Favicon />
+    <GlobalStyle />
   </head>
   <body>
-    <slot/>
+    <slot />
+    <Footer />
   </body>
 </html>
