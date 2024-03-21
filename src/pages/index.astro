@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
+import Works from "@components/Works.astro";
+import { getEntries, getEntry } from "astro:content";
+
+const { data } = await getEntry("resume", "pabcrudel");
+const works = await getEntries(data.works);
 ---
 
 <BaseLayout>
@@ -29,6 +34,7 @@ import svgCover from "@public/images/pabcrudel-ico-circle.svg";
       </p>
     </section>
   </header>
+  <Works works={works}/>
 </BaseLayout>
 
 <style>

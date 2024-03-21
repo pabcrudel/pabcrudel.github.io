@@ -1,0 +1,64 @@
+---
+import { type CollectionEntry } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+
+interface Props {
+  works: CollectionEntry<"work">[];
+}
+
+const { works } = Astro.props;
+---
+
+<section id="works">
+  <h2>Works</h2>
+  <ul>
+    {
+      works.map(({ data: { url, name, position, startDate, endDate } }) => (
+        <li>
+          <article>
+            <h3>
+              <a href={url}>{name}</a>
+            </h3>
+            <p>
+              <FormattedDate date={startDate} />
+              -
+              <FormattedDate date={endDate} />
+            </p>
+            <h4>{position}</h4>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    /* Bullet points starts at the same vertical line that other content */
+    margin-left: 0.3em;
+  }
+
+  ul {
+    /* Add a vertical line aligned with the bullet points */
+    padding-left: 1em;
+    border-left: 1px solid;
+  }
+
+  li::marker {
+    /* Increase bullet point size */
+    font-size: 1.5em;
+  }
+
+  h3 {
+    /* Remove space between heading and date */
+    margin-bottom: 0;
+  }
+
+  p {
+    /* Same as before */
+    margin-top: 0;
+
+    /* Reduce Date font size because is less important than other information */
+    font-size: smaller;
+  }
+</style>
