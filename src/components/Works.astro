@@ -33,15 +33,13 @@ const { works } = Astro.props;
 </section>
 
 <style>
-  section {
-    /* Bullet points starts at the same vertical line that other content */
-    margin-left: 0.3em;
-  }
-
   ul {
     /* Add a vertical line aligned with the bullet points */
     padding-left: 1em;
     border-left: 1px solid;
+
+    /* Bullet points starts at the same vertical line that other content */
+    margin-left: 0.3em;
   }
 
   li::marker {
