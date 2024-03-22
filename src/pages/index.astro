@@ -9,50 +9,74 @@ const works = await getEntries(data.works);
 ---
 
 <BaseLayout>
-  <header>
+  <header id="hero">
     <img
       src={svgCover.src}
-      width="350"
+      width="250"
       alt="Pablo Cru's personal brand trademark"
     />
-    <section id="about-me">
+    <section>
       <h1 id="pabcrudel">Pablo Cru Delhom</h1>
       <h2>Full Stack Web Developer</h2>
-      <p>
-        I like to create <strong>solid website applications</strong> focused on reliability
-        and scalability following good practices. Non stop improving my programming
-        skills <cite>
-          <a
-            href="https://www.swyx.io/learn-in-public"
-            title="SWYX's Learning Philosophy">learning in public</a
-          ></cite
-        > on my
-        <a
-          href="https://github.com/pabcrudel"
-          title="Take a look at my repositories">GitHub profile</a
-        >.
-      </p>
+      <p>{data.location.city}, {data.location.country}</p>
     </section>
   </header>
-  <Works works={works}/>
+  <section id="about-me">
+    <h2>About me</h2>
+    <p>
+      I like to create <strong>solid website applications</strong> focused on reliability
+      and scalability following good practices. Non stop improving my programming
+      skills <cite>
+        <a
+          href="https://www.swyx.io/learn-in-public"
+          title="SWYX's Learning Philosophy">learning in public</a
+        ></cite
+      > on my
+      <a
+        href="https://github.com/pabcrudel"
+        title="Take a look at my repositories">GitHub profile</a
+      >.
+    </p>
+  </section>
+  <Works works={works} />
 </BaseLayout>
 
 <style>
   @supports (display: flex) and (position: absolute) {
-    /* Center personal brand trademark on mobile */
+    /* Remove space between headings */
+    header section > * {
+      margin-block: 0;
+    }
+
+    /* Reset h1 font sice because is reduced inside section */
+    header section h1 {
+      font-size: 2em;
+    }
+
+    /* Increase space between the header and it's sibling */
     header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      margin-bottom: 3em;
     }
 
     /* Styles related to header applied on bigger screens */
     @media screen and (min-width: 700px) {
-      /* Override mobile flex rules */
-      body > header {
-        /* Display header children in rows */
-        flex-direction: row;
-        gap: 1em;
+      /* Move hero image to the left */
+      header {
+        display: flex;
+        gap: 3em;
+      }
+      /* Align content with the center of the image */
+      header section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    /* Styles related to header applied on smaller screens */
+    @media screen and (max-width: 700px) {
+      header {
+        /* Move hero image to the left */
+        text-align: center;
       }
     }
   }
