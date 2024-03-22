@@ -107,7 +107,7 @@
   box-sizing: border-box;
 
   /* Center content to improve legibility */
-  --max-width: 75ch;
+  --max-width: 70ch;
   max-width: var(--max-width);
   margin: auto;
 }
