@@ -4,8 +4,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
 
-const { data } = await getEntry("resume", "pabcrudel");
-const works = await getEntries(data.works);
+const {
+  data: { location, works },
+} = await getEntry("resume", "pabcrudel");
+
+const worksCollection = await getEntries(works);
 ---
 
 <BaseLayout>
@@ -18,7 +21,7 @@ const works = await getEntries(data.works);
     <section>
       <h1 id="pabcrudel">Pablo Cru Delhom</h1>
       <h2>Full Stack Web Developer</h2>
-      <p>{data.location.city}, {data.location.country}</p>
+      <p>{location.city}, {location.country}</p>
     </section>
   </header>
   <section id="about-me">
@@ -42,21 +45,23 @@ const works = await getEntries(data.works);
     <h2>Works</h2>
     <ul>
       {
-        works.map(({ data: { url, name, position, startDate, endDate } }) => (
-          <li>
-            <article>
-              <h3>
-                <a href={url}>{name}</a>
-              </h3>
-              <p>
-                <FormattedDate date={startDate} />
-                -
-                <FormattedDate date={endDate} />
-              </p>
-              <h4>{position}</h4>
-            </article>
-          </li>
-        ))
+        worksCollection.map(
+          ({ data: { url, name, position, startDate, endDate } }) => (
+            <li>
+              <article>
+                <h3>
+                  <a href={url}>{name}</a>
+                </h3>
+                <p>
+                  <FormattedDate date={startDate} />
+                  -
+                  <FormattedDate date={endDate} />
+                </p>
+                <h4>{position}</h4>
+              </article>
+            </li>
+          )
+        )
       }
     </ul>
   </section>
