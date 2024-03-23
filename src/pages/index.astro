@@ -5,11 +5,12 @@ import FormattedDate from "@components/FormattedDate.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
 
 const {
-  data: { location, works, projects },
+  data: { location, works, projects, education },
 } = await getEntry("resume", "pabcrudel");
 
 const worksCollection = await getEntries(works);
 const projectsCollection = await getEntries(projects);
+const educationCollection = await getEntries(education);
 ---
 
 <BaseLayout>
@@ -84,6 +85,32 @@ const projectsCollection = await getEntries(projects);
                     <li>{tag}</li>
                   ))}
                 </ul>
+              </article>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </section>
+  <section id="education" class="chronological">
+    <h2>Studies</h2>
+    <ul>
+      {
+        educationCollection.map(
+          ({
+            data: { area, institution, url, studyType, startDate, endDate },
+          }) => (
+            <li>
+              <article>
+                <h3>
+                  {area} at <a href={url}>{institution}</a>
+                </h3>
+                <p>
+                  <FormattedDate date={startDate} />
+                  -
+                  <FormattedDate date={endDate} />
+                </p>
+                <h4>{studyType}</h4>
               </article>
             </li>
           )
