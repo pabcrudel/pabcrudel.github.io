@@ -76,16 +76,21 @@ const educationCollection = await getEntries(education);
             ({ data: { url, name, description, highlights } }) => (
               <li>
                 <article>
-                  <h3>
-                    <a href={url}>{name}</a>
-                  </h3>
-                  <p>{description}</p>
-                  <h4>Tags</h4>
-                  <ul>
-                    {highlights.map((tag) => (
-                      <li>{tag}</li>
-                    ))}
-                  </ul>
+                  <header>
+                    <h3>
+                      <a href={url}>{name}</a>
+                    </h3>
+                  </header>
+                  <main>
+                    <p>{description}</p>
+                  </main>
+                  <footer>
+                    <ul>
+                      {highlights.map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </footer>
                 </article>
               </li>
             )
@@ -124,38 +129,34 @@ const educationCollection = await getEntries(education);
 
 <style>
   /* Remove space between headings */
-  header section > * {
+  header#hero section > * {
     margin-block: 0;
   }
-
   /* Reset h1 font sice because is reduced inside section */
-  header section h1 {
+  header#hero section h1 {
     font-size: 2em;
   }
-
   /* Increase space between the header and it's sibling */
-  header {
+  header#hero {
     margin-bottom: 3em;
   }
-
   /* Styles related to header applied on smaller screens */
   @media screen and (max-width: 700px) {
-    header {
+    header#hero {
       /* Move hero image to the left */
       text-align: center;
     }
   }
-
   @supports (display: flex) {
     /* Styles related to header applied on bigger screens */
     @media screen and (min-width: 700px) {
       /* Move hero image to the left */
-      header {
+      header#hero {
         display: flex;
         gap: 3em;
       }
       /* Align content with the center of the image */
-      header section {
+      header#hero section {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -171,22 +172,19 @@ const educationCollection = await getEntries(education);
     /* Bullet points starts at the same vertical line that other content */
     margin-left: 0.3em;
   }
-
   .chronological li::marker {
     /* Increase bullet point size */
     font-size: 1.5em;
   }
-
   .chronological h3 {
     /* Remove space between heading and date */
     margin-bottom: 0;
   }
-
   .chronological p {
     /* Same as before */
     margin-top: 0;
 
-    /* Reduce Date font size because is less important than other information */
+    /* Reduce date font size because is less important than other information */
     font-size: smaller;
   }
 </style>
