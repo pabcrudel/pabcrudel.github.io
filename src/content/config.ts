@@ -63,7 +63,6 @@ export const collections = {
     type: "data",
     schema: z.object({
       name: z.string(),
-      date: z.date(),
       description: z.string(),
       highlights: z.array(z.string()),
       url: z.string().url(),
