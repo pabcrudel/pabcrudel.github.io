@@ -5,10 +5,11 @@ import FormattedDate from "@components/FormattedDate.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
 
 const {
-  data: { location, works },
+  data: { location, works, projects },
 } = await getEntry("resume", "pabcrudel");
 
 const worksCollection = await getEntries(works);
+const projectsCollection = await getEntries(projects);
 ---
 
 <BaseLayout>
@@ -58,6 +59,31 @@ const worksCollection = await getEntries(works);
                   <FormattedDate date={endDate} />
                 </p>
                 <h4>{position}</h4>
+              </article>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </section>
+  <section id="projects" class="gallery">
+    <h2>Projects</h2>
+    <ul>
+      {
+        projectsCollection.map(
+          ({ data: { url, name, description, highlights } }) => (
+            <li>
+              <article>
+                <h3>
+                  <a href={url}>{name}</a>
+                </h3>
+                <p>{description}</p>
+                <h4>Tags</h4>
+                <ul>
+                  {highlights.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
               </article>
             </li>
           )
