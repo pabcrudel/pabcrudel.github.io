@@ -26,98 +26,100 @@ const educationCollection = await getEntries(education);
       <p>{location.city}, {location.country}</p>
     </section>
   </header>
-  <section id="about-me">
-    <h2>About me</h2>
-    <p>
-      I like to create <strong>solid website applications</strong> focused on reliability
-      and scalability following good practices. Non stop improving my programming
-      skills <cite>
+  <main>
+    <section id="about-me">
+      <h2>About me</h2>
+      <p>
+        I like to create <strong>solid website applications</strong> focused on reliability
+        and scalability following good practices. Non stop improving my programming
+        skills <cite>
+          <a
+            href="https://www.swyx.io/learn-in-public"
+            title="SWYX's Learning Philosophy">learning in public</a
+          ></cite
+        > on my
         <a
-          href="https://www.swyx.io/learn-in-public"
-          title="SWYX's Learning Philosophy">learning in public</a
-        ></cite
-      > on my
-      <a
-        href="https://github.com/pabcrudel"
-        title="Take a look at my repositories">GitHub profile</a
-      >.
-    </p>
-  </section>
-  <section id="works" class="chronological">
-    <h2>Works</h2>
-    <ul>
-      {
-        worksCollection.map(
-          ({ data: { url, name, position, startDate, endDate } }) => (
-            <li>
-              <article>
-                <h3>
-                  <a href={url}>{name}</a>
-                </h3>
-                <p>
-                  <FormattedDate date={startDate} />
-                  -
-                  <FormattedDate date={endDate} />
-                </p>
-                <h4>{position}</h4>
-              </article>
-            </li>
+          href="https://github.com/pabcrudel"
+          title="Take a look at my repositories">GitHub profile</a
+        >.
+      </p>
+    </section>
+    <section id="works" class="chronological">
+      <h2>Works</h2>
+      <ul>
+        {
+          worksCollection.map(
+            ({ data: { url, name, position, startDate, endDate } }) => (
+              <li>
+                <article>
+                  <h3>
+                    <a href={url}>{name}</a>
+                  </h3>
+                  <p>
+                    <FormattedDate date={startDate} />
+                    -
+                    <FormattedDate date={endDate} />
+                  </p>
+                  <h4>{position}</h4>
+                </article>
+              </li>
+            )
           )
-        )
-      }
-    </ul>
-  </section>
-  <section id="projects" class="gallery">
-    <h2>Projects</h2>
-    <ul>
-      {
-        projectsCollection.map(
-          ({ data: { url, name, description, highlights } }) => (
-            <li>
-              <article>
-                <h3>
-                  <a href={url}>{name}</a>
-                </h3>
-                <p>{description}</p>
-                <h4>Tags</h4>
-                <ul>
-                  {highlights.map((tag) => (
-                    <li>{tag}</li>
-                  ))}
-                </ul>
-              </article>
-            </li>
+        }
+      </ul>
+    </section>
+    <section id="projects" class="gallery">
+      <h2>Projects</h2>
+      <ul>
+        {
+          projectsCollection.map(
+            ({ data: { url, name, description, highlights } }) => (
+              <li>
+                <article>
+                  <h3>
+                    <a href={url}>{name}</a>
+                  </h3>
+                  <p>{description}</p>
+                  <h4>Tags</h4>
+                  <ul>
+                    {highlights.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                </article>
+              </li>
+            )
           )
-        )
-      }
-    </ul>
-  </section>
-  <section id="education" class="chronological">
-    <h2>Studies</h2>
-    <ul>
-      {
-        educationCollection.map(
-          ({
-            data: { area, institution, url, studyType, startDate, endDate },
-          }) => (
-            <li>
-              <article>
-                <h3>
-                  {area} at <a href={url}>{institution}</a>
-                </h3>
-                <p>
-                  <FormattedDate date={startDate} />
-                  -
-                  <FormattedDate date={endDate} />
-                </p>
-                <h4>{studyType}</h4>
-              </article>
-            </li>
+        }
+      </ul>
+    </section>
+    <section id="education" class="chronological">
+      <h2>Studies</h2>
+      <ul>
+        {
+          educationCollection.map(
+            ({
+              data: { area, institution, url, studyType, startDate, endDate },
+            }) => (
+              <li>
+                <article>
+                  <h3>
+                    {area} at <a href={url}>{institution}</a>
+                  </h3>
+                  <p>
+                    <FormattedDate date={startDate} />
+                    -
+                    <FormattedDate date={endDate} />
+                  </p>
+                  <h4>{studyType}</h4>
+                </article>
+              </li>
+            )
           )
-        )
-      }
-    </ul>
-  </section>
+        }
+      </ul>
+    </section>
+  </main>
 </BaseLayout>
 
 <style>
