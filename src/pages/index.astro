@@ -121,22 +121,30 @@ const educationCollection = await getEntries(education);
 </BaseLayout>
 
 <style>
-  @supports (display: flex) and (position: absolute) {
-    /* Remove space between headings */
-    header section > * {
-      margin-block: 0;
-    }
+  /* Remove space between headings */
+  header section > * {
+    margin-block: 0;
+  }
 
-    /* Reset h1 font sice because is reduced inside section */
-    header section h1 {
-      font-size: 2em;
-    }
+  /* Reset h1 font sice because is reduced inside section */
+  header section h1 {
+    font-size: 2em;
+  }
 
-    /* Increase space between the header and it's sibling */
+  /* Increase space between the header and it's sibling */
+  header {
+    margin-bottom: 3em;
+  }
+
+  /* Styles related to header applied on smaller screens */
+  @media screen and (max-width: 700px) {
     header {
-      margin-bottom: 3em;
+      /* Move hero image to the left */
+      text-align: center;
     }
+  }
 
+  @supports (display: flex) {
     /* Styles related to header applied on bigger screens */
     @media screen and (min-width: 700px) {
       /* Move hero image to the left */
@@ -149,13 +157,6 @@ const educationCollection = await getEntries(education);
         display: flex;
         flex-direction: column;
         justify-content: center;
-      }
-    }
-    /* Styles related to header applied on smaller screens */
-    @media screen and (max-width: 700px) {
-      header {
-        /* Move hero image to the left */
-        text-align: center;
       }
     }
   }
