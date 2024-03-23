@@ -164,6 +164,11 @@ const educationCollection = await getEntries(education);
     }
   }
 
+  /* Increase space between section inside main */
+  main > section:not(:last-child) {
+    margin-bottom: 3em;
+  }
+
   .chronological ul {
     /* Add a vertical line aligned with the bullet points */
     padding-left: 1em;
