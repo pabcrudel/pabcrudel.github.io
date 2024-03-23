@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import svgCover from "@public/images/pabcrudel-ico-circle.svg";
-import Works from "@components/Works.astro";
 import { getEntries, getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import svgCover from "@public/images/pabcrudel-ico-circle.svg";
 
 const { data } = await getEntry("resume", "pabcrudel");
 const works = await getEntries(data.works);
@@ -38,7 +38,28 @@ const works = await getEntries(data.works);
       >.
     </p>
   </section>
-  <Works works={works} />
+  <section id="works" class="chronological">
+    <h2>Works</h2>
+    <ul>
+      {
+        works.map(({ data: { url, name, position, startDate, endDate } }) => (
+          <li>
+            <article>
+              <h3>
+                <a href={url}>{name}</a>
+              </h3>
+              <p>
+                <FormattedDate date={startDate} />
+                -
+                <FormattedDate date={endDate} />
+              </p>
+              <h4>{position}</h4>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>
 
 <style>
@@ -79,5 +100,32 @@ const works = await getEntries(data.works);
         text-align: center;
       }
     }
+  }
+
+  .chronological ul {
+    /* Add a vertical line aligned with the bullet points */
+    padding-left: 1em;
+    border-left: 1px solid;
+
+    /* Bullet points starts at the same vertical line that other content */
+    margin-left: 0.3em;
+  }
+
+  .chronological li::marker {
+    /* Increase bullet point size */
+    font-size: 1.5em;
+  }
+
+  .chronological h3 {
+    /* Remove space between heading and date */
+    margin-bottom: 0;
+  }
+
+  .chronological p {
+    /* Same as before */
+    margin-top: 0;
+
+    /* Reduce Date font size because is less important than other information */
+    font-size: smaller;
   }
 </style>
