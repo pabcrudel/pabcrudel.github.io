@@ -157,8 +157,8 @@ code {
 
   @media (prefers-color-scheme: dark) {
     :root {
-      color: var(--white);
-      background-color: var(--black);
+      --text-color: var(--white);
+      --background-color: var(--black);
 
       --primary: var(--dark-primary);
       --secondary: var(--dark-secondary);
@@ -168,13 +168,19 @@ code {
 
   @media (prefers-color-scheme: light) {
     :root {
-      color: var(--black);
-      background-color: var(--white);
+      --text-color: var(--black);
+      --background-color: var(--white);
 
       --primary: var(--light-primary);
       --secondary: var(--light-secondary);
       --tertiary: var(--light-tertiary);
     }
+  }
+
+  /* Colors applied to text color and background color */
+  :root {
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
 
   /* Colors applied to anchors depending on their states */
