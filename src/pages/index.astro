@@ -187,4 +187,51 @@ const educationCollection = await getEntries(education);
     /* Reduce date font size because is less important than other information */
     font-size: smaller;
   }
+
+  .gallery ul {
+    /* Remove any child list it's default styles */
+    list-style: none;
+    padding-left: 0;
+  }
+  .gallery article li {
+    /* Reduce font size because are less important */
+    font-size: small;
+
+    /* Tags will look like pills */
+    display: inline-block;
+    padding: 0.1em 0.5em 0.2em;
+    border: 1px solid;
+    border-radius: 1em;
+  }
+  /* Leave space between projects */
+  .gallery > ul li {
+    margin-bottom: 1.5em;
+  }
+  @supports (display: flex) and (display: grid) {
+    .gallery article ul {
+      /* Display tags in horizontal way */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+
+    /* Display projects in two columns */
+    .gallery > ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .gallery > ul article {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .gallery > ul article * {
+      margin: 0;
+    }
+    .gallery > ul article main {
+      flex-grow: 1;
+    }
+  }
 </style>
