@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  projects: CollectionEntry<"project">[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="projects">
+  <h2>Projects</h2>
+  <ul class="projects">
+    {
+      projects.map(({ data: { url, name, description, highlights } }) => (
+        <li class="project">
+          <article>
+            <header>
+              <h3>
+                <a href={url}>{name}</a>
+              </h3>
+            </header>
+            <main>
+              <p>{description}</p>
+            </main>
+            <footer>
+              <ul class="tags">
+                {highlights.map((tag) => (
+                  <li class="tag">{tag}</li>
+                ))}
+              </ul>
+            </footer>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  ul {
+    /* Remove any child list it's default styles */
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .tag {
+    /* Reduce font size because are less important */
+    font-size: small;
+
+    /* Tags will look like pills */
+    display: inline-block;
+    padding: 0.1em 0.5em 0.2em;
+    border: 1px solid;
+    border-radius: 1em;
+  }
+
+  /* Leave space between projects */
+  .project {
+    margin-bottom: 1.5em;
+  }
+
+  @supports (display: flex) and (display: grid) {
+    .tags {
+      /* Display tags in horizontal way */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+
+    /* Display projects in two columns */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .project article {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .project article * {
+      margin: 0;
+    }
+    .project main {
+      flex-grow: 1;
+    }
+  }
+</style>

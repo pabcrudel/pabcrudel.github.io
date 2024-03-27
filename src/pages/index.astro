@@ -1,8 +1,10 @@
 ---
 import { getEntries, getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import FormattedDate from "@components/FormattedDate.astro";
+import Education from "@components/resume-sections/Education.astro";
+import Projects from "@components/resume-sections/Projects.astro";
 import svgCover from "@public/images/pabcrudel-ico-circle.svg";
+import Works from "@components/resume-sections/Works.astro";
 
 const {
   data: { location, works, projects, education },
@@ -44,86 +46,9 @@ const educationCollection = await getEntries(education);
         >.
       </p>
     </section>
-    <section id="works" class="chronological">
-      <h2>Works</h2>
-      <ul>
-        {
-          worksCollection.map(
-            ({ data: { url, name, position, startDate, endDate } }) => (
-              <li>
-                <article>
-                  <h3>
-                    <a href={url}>{name}</a>
-                  </h3>
-                  <p>
-                    <FormattedDate date={startDate} />
-                    -
-                    <FormattedDate date={endDate} />
-                  </p>
-                  <h4>{position}</h4>
-                </article>
-              </li>
-            )
-          )
-        }
-      </ul>
-    </section>
-    <section id="projects" class="gallery">
-      <h2>Projects</h2>
-      <ul>
-        {
-          projectsCollection.map(
-            ({ data: { url, name, description, highlights } }) => (
-              <li>
-                <article>
-                  <header>
-                    <h3>
-                      <a href={url}>{name}</a>
-                    </h3>
-                  </header>
-                  <main>
-                    <p>{description}</p>
-                  </main>
-                  <footer>
-                    <ul>
-                      {highlights.map((tag) => (
-                        <li>{tag}</li>
-                      ))}
-                    </ul>
-                  </footer>
-                </article>
-              </li>
-            )
-          )
-        }
-      </ul>
-    </section>
-    <section id="education" class="chronological">
-      <h2>Studies</h2>
-      <ul>
-        {
-          educationCollection.map(
-            ({
-              data: { area, institution, url, studyType, startDate, endDate },
-            }) => (
-              <li>
-                <article>
-                  <h3>
-                    {area} at <a href={url}>{institution}</a>
-                  </h3>
-                  <p>
-                    <FormattedDate date={startDate} />
-                    -
-                    <FormattedDate date={endDate} />
-                  </p>
-                  <p>{studyType}</p>
-                </article>
-              </li>
-            )
-          )
-        }
-      </ul>
-    </section>
+    <Works works={worksCollection} />
+    <Projects projects={projectsCollection} />
+    <Education education={educationCollection} />
   </main>
 </BaseLayout>
 
@@ -163,7 +88,9 @@ const educationCollection = await getEntries(education);
       }
     }
   }
+</style>
 
+<style is:global>
   /* Increase space between section inside main */
   main > section:not(:last-child) {
     margin-bottom: 3em;
@@ -191,52 +118,5 @@ const educationCollection = await getEntries(education);
 
     /* Reduce date font size because is less important than other information */
     font-size: smaller;
-  }
-
-  .gallery ul {
-    /* Remove any child list it's default styles */
-    list-style: none;
-    padding-left: 0;
-  }
-  .gallery article li {
-    /* Reduce font size because are less important */
-    font-size: small;
-
-    /* Tags will look like pills */
-    display: inline-block;
-    padding: 0.1em 0.5em 0.2em;
-    border: 1px solid;
-    border-radius: 1em;
-  }
-  /* Leave space between projects */
-  .gallery > ul li {
-    margin-bottom: 1.5em;
-  }
-  @supports (display: flex) and (display: grid) {
-    .gallery article ul {
-      /* Display tags in horizontal way */
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-    }
-
-    /* Display projects in two columns */
-    .gallery > ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-    }
-    .gallery > ul article {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-    .gallery > ul article * {
-      margin: 0;
-    }
-    .gallery > ul article main {
-      flex-grow: 1;
-    }
   }
 </style>

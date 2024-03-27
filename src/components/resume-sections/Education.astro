@@ -1,0 +1,35 @@
+---
+import FormattedDate from "../FormattedDate.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  education: CollectionEntry<"education">[];
+}
+
+const { education } = Astro.props;
+---
+
+<section id="educations" class="chronological">
+  <h2>Studies</h2>
+  <ul>
+    {
+      education.map(
+        ({ data: { area, institution, url, studyType, startDate, endDate } }) => (
+          <li>
+            <article>
+              <h3>
+                {area} at <a href={url}>{institution}</a>
+              </h3>
+              <p>
+                <FormattedDate date={startDate} />
+                -
+                <FormattedDate date={endDate} />
+              </p>
+              <p>{studyType}</p>
+            </article>
+          </li>
+        )
+      )
+    }
+  </ul>
+</section>
