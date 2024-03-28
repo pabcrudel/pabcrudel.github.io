@@ -3,12 +3,12 @@ import { getEntries, getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Education from "@components/resume-sections/Education.astro";
 import Projects from "@components/resume-sections/Projects.astro";
-import svgCover from "@public/images/pabcrudel-ico-circle.svg";
+import svgCover from "@public/images/pablocru-ico-circle.svg";
 import Works from "@components/resume-sections/Works.astro";
 
 const {
   data: { location, works, projects, education },
-} = await getEntry("resume", "pabcrudel");
+} = await getEntry("resume", "pablocru");
 
 const worksCollection = await getEntries(works);
 const projectsCollection = await getEntries(projects);
@@ -23,7 +23,7 @@ const educationCollection = await getEntries(education);
       alt="Pablo Cru's personal brand trademark"
     />
     <section>
-      <h1 id="pabcrudel">Pablo Cru Delhom</h1>
+      <h1>Pablo Cru Delhom</h1>
       <h2>Full Stack Web Developer</h2>
       <p>{location.city}, {location.country}</p>
     </section>
@@ -41,7 +41,7 @@ const educationCollection = await getEntries(education);
           ></cite
         > on my
         <a
-          href="https://github.com/pabcrudel"
+          href="https://github.com/pablocru?tab=repositories"
           title="Take a look at my repositories">GitHub profile</a
         >.
       </p>

@@ -7,4 +7,4 @@ Some of my projects are deployed using GitHub Pages (like this portfolio) so
 they are publicly accessible as routes of this website.
 
 Take a look at my website here:
-[pabcrudel.github.io](https://pabcrudel.github.io)
+[pablocru.github.io](https://pablocru.github.io)
