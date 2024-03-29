@@ -1,9 +1,10 @@
 ---
 import { getEntries, getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import CustomPicture from "@components/image-optimization/CustomPicture.astro";
 import Education from "@components/resume-sections/Education.astro";
 import Projects from "@components/resume-sections/Projects.astro";
-import svgCover from "@public/images/pablocru-ico-circle.svg";
+import tradeMark from "@images/pablocru-ico-circle.png";
 import Works from "@components/resume-sections/Works.astro";
 
 const {
@@ -17,10 +18,11 @@ const educationCollection = await getEntries(education);
 
 <BaseLayout>
   <header id="hero">
-    <img
-      src={svgCover.src}
-      width="250"
+    <CustomPicture
+      src={tradeMark}
+      widths={[250]}
       alt="Pablo Cru's personal brand trademark"
+      loading="eager"
     />
     <section>
       <h1>Pablo Cru Delhom</h1>
