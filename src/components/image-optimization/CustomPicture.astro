@@ -1,0 +1,50 @@
+---
+import { getImage } from "astro:assets";
+import { getImageSource, getSizes } from "./utils";
+import type { PictureProps } from "./types";
+
+type Props = PictureProps;
+
+const {
+  src,
+  alt,
+  widths,
+  formats = ["avif", "webp"],
+  loading = "lazy",
+} = Astro.props;
+
+formats.push(src.format);
+const clearedFormats = Array.from(new Set(formats)); // Clear repeated formats
+
+const clearedWidths = Array.from(new Set(widths)); // Clear repeated widths
+
+const result = await Promise.all(
+  clearedFormats.map(
+    async (format) => await getImage({ src, format, widths: clearedWidths })
+  )
+);
+
+const fallbackImageData = result.pop();
+if (!fallbackImageData) throw new Error("There is no fallback image");
+const fallbackImage = fallbackImageData.srcSet;
+
+const sources = result.map((source) => getImageSource(source.srcSet.values));
+---
+
+<picture>
+  {
+    sources.map((extension) =>
+      extension.map(({ media, url, attributes }) => (
+        <source media={media} srcset={url} {...attributes} />
+      ))
+    )
+  }
+  <img
+    src={fallbackImage.values[0].url}
+    srcset={fallbackImage.attribute}
+    sizes={getSizes(clearedWidths)}
+    alt={alt}
+    loading={loading}
+    decoding="async"
+  />
+</picture>

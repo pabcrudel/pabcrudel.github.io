@@ -1,0 +1,22 @@
+---
+import { getImage } from "astro:assets";
+import { getSizes } from "./utils";
+import type { ImageProps } from "./types";
+
+type Props = ImageProps;
+
+const { src, alt, widths, format = "webp", loading = "lazy" } = Astro.props;
+
+const clearedWidths = Array.from(new Set(widths)); // Clear repeated widths
+
+const { srcSet } = await getImage({ src, format, widths: clearedWidths });
+---
+
+<img
+  src={srcSet.values[0].url}
+  srcset={srcSet.attribute}
+  sizes={getSizes(clearedWidths)}
+  alt={alt}
+  loading={loading}
+  decoding="async"
+/>
