@@ -27,7 +27,11 @@ module.exports = {
   rules: {
     quotes: ["error", "double"],
     "comma-dangle": ["error", "only-multiline"],
-    "space-before-function-paren": ["error", "anonymous"]
+    "space-before-function-paren": ["error", {
+      anonymous: "always",
+      named: "never",
+      asyncArrow: "always"
+    }]
   },
   ignorePatterns: ["env.d.ts"],
 };
