@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "../FormattedDate.astro";
+import IconLink from "../IconLink.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -13,21 +14,55 @@ const { works } = Astro.props;
   <h2>Work experience</h2>
   <ul>
     {
-      works.map(({ data: { url, name, position, startDate, endDate } }) => (
-        <li>
-          <article>
-            <h3>
-              <a href={url}>{name}</a>
-            </h3>
-            <p>
-              <FormattedDate date={startDate} />
-              -
-              <FormattedDate date={endDate} />
-            </p>
-            <h4>{position}</h4>
-          </article>
-        </li>
-      ))
+      works.map(
+        ({
+          data: { name, position, startDate, endDate, website, linkedIn },
+        }) => (
+          <li>
+            <article>
+              <header>
+                <h3>{name}</h3>
+                <p>
+                  <FormattedDate date={startDate} />
+                  -
+                  <FormattedDate date={endDate} />
+                </p>
+              </header>
+              <main>
+                <h4>{position}</h4>
+              </main>
+              {website || linkedIn ? (
+                <footer>
+                  {website ? (
+                    <IconLink
+                      href={website}
+                      iconName="Website"
+                    />
+                  ) : (
+                    ""
+                  )}
+                  {linkedIn ? (
+                    <IconLink
+                      href={linkedIn}
+                      iconName="LinkedIn"
+                    />
+                  ) : (
+                    ""
+                  )}
+                </footer>
+              ) : (
+                ""
+              )}
+            </article>
+          </li>
+        )
+      )
     }
   </ul>
 </section>
+
+<style>
+  footer a {
+    font-size: smaller;
+  }
+</style>

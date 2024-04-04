@@ -34,7 +34,8 @@ export const collections = {
     schema: z.object({
       name: z.string(),
       position: z.string(),
-      url: z.string().url(),
+      website: z.string().url().nullable(),
+      linkedIn: z.string().url().nullable(),
       startDate: z.date(),
       endDate: z.date(),
       summary: z.string().optional(),
