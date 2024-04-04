@@ -1,4 +1,5 @@
 ---
+import IconLink from "@components/IconLink.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -12,27 +13,49 @@ const { projects } = Astro.props;
   <h2>Projects</h2>
   <ul class="projects">
     {
-      projects.map(({ data: { url, name, description, highlights } }) => (
-        <li class="project">
-          <article>
-            <header>
-              <h3>
-                <a href={url}>{name}</a>
-              </h3>
-            </header>
-            <main>
-              <p>{description}</p>
-            </main>
-            <footer>
-              <ul class="tags">
-                {highlights.map((tag) => (
-                  <li class="tag">{tag}</li>
-                ))}
-              </ul>
-            </footer>
-          </article>
-        </li>
-      ))
+      projects.map(
+        ({ data: { name, description, highlights, sourceCode, preview } }) => (
+          <li class="project">
+            <article>
+              <header>
+                <h3>{name}</h3>
+                {sourceCode
+                  ? (
+                  <IconLink
+                    href={sourceCode}
+                    iconName="GitHub"
+                    anchorText="Source Code"
+                  />
+                    )
+                  : (
+                      ""
+                    )}
+                {preview
+                  ? (
+                  <IconLink
+                    href={preview}
+                    iconName="Rocket"
+                    anchorText="Preview"
+                  />
+                    )
+                  : (
+                      ""
+                    )}
+              </header>
+              <main>
+                <p>{description}</p>
+              </main>
+              <footer>
+                <ul class="tags">
+                  {highlights.map((tag) => (
+                    <li class="tag">{tag}</li>
+                  ))}
+                </ul>
+              </footer>
+            </article>
+          </li>
+        )
+      )
     }
   </ul>
 </section>

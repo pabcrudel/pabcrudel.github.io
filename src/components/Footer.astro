@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import IconLink from "@components/IconLink.astro";
 
 const socialLinks = await getCollection("socialMediaLink");
 
@@ -16,7 +17,7 @@ const githubUrl = "https://github.com/pablocru/" + repository;
           {
             socialLinks.map(({ data: { url, network } }) => (
               <li>
-                <a href={url}>{network}</a>
+                <IconLink href={url} iconName={network} anchorText={network} />
               </li>
             ))
           }
@@ -71,24 +72,56 @@ const githubUrl = "https://github.com/pablocru/" + repository;
 </footer>
 
 <style>
+  footer {
+    /* Display a simple shadow to separate footer visually */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Leave space depending on the font size */
+    margin-top: 2em;
+    padding: 1em 0.5em 0;
+  }
+  /*
+    Display a line on top of Copyright section which color depends on the
+    preferred color schema. Also specify margin to separate it.
+  */
+  footer > aside::before {
+    content: "";
+    display: block;
+    border-top: 1px solid;
+    margin: 2em 0 1em;
+  }
+  /* Copyright section will be centered */
+  footer > aside {
+    text-align: center;
+  }
+
+  section#social-links ul {
+    /* Reset list styles */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    /* Reduce font size because */
+    font-size: smaller;
+  }
+
   @supports (display: flex) and (position: absolute) {
-    /* Styles applied to the footer */
+    /* Place social link in rows */
+    section#social-links ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+
+    /* Expand footer on both sides to display the shadow correctly */
     footer {
-      /* Display a simple shadow to separate footer visually */
-      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-
-      /* Leave space depending on the font size */
-      margin-top: 2em;
-      padding: 1em 0.5em 0;
-
-      /* Expand footer on both sides to display the shadow correctly */
       position: absolute;
       left: 0;
       right: 0;
     }
 
+    /* Center content like the body text */
     footer > * {
-      /* Center content like the body text */
       max-width: var(--max-width);
       margin: auto;
     }
@@ -97,22 +130,7 @@ const githubUrl = "https://github.com/pablocru/" + repository;
     footer > div {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    /* Copyright section will be centered */
-    footer > aside {
-      text-align: center;
-    }
-
-    /*
-    Display a line on top of Copyright section which color depends on the
-    preferred color schema. Also specify margin to separate it.
-    */
-    footer > aside::before {
-      content: "";
-      display: block;
-      border-top: 1px solid;
-      margin: 2em 0 1em;
+      gap: 1em;
     }
   }
 </style>
