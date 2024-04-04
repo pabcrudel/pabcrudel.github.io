@@ -23,9 +23,8 @@ const { works } = Astro.props;
               <header>
                 <h3>{name}</h3>
                 <p>
-                  <FormattedDate date={startDate} />
-                  -
-                  <FormattedDate date={endDate} />
+                  <FormattedDate date={startDate} /> -
+                  {endDate ? <FormattedDate date={endDate} /> : "Currently"}
                 </p>
               </header>
               <main>
@@ -34,18 +33,12 @@ const { works } = Astro.props;
               {website || linkedIn ? (
                 <footer>
                   {website ? (
-                    <IconLink
-                      href={website}
-                      iconName="Website"
-                    />
+                    <IconLink href={website} iconName="Website" />
                   ) : (
                     ""
                   )}
                   {linkedIn ? (
-                    <IconLink
-                      href={linkedIn}
-                      iconName="LinkedIn"
-                    />
+                    <IconLink href={linkedIn} iconName="LinkedIn" />
                   ) : (
                     ""
                   )}

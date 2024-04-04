@@ -37,7 +37,7 @@ export const collections = {
       website: z.string().url().nullable(),
       linkedIn: z.string().url().nullable(),
       startDate: z.date(),
-      endDate: z.date(),
+      endDate: z.date().nullable(),
       summary: z.string().optional(),
       highlights: z.array(z.string()).optional(),
     }),
