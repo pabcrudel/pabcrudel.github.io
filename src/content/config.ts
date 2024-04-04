@@ -38,8 +38,7 @@ export const collections = {
       linkedIn: z.string().url().nullable(),
       startDate: z.date(),
       endDate: z.date().nullable(),
-      summary: z.string().optional(),
-      highlights: z.array(z.string()).optional(),
+      summary: z.string().optional().nullable(),
     }),
   }),
   education: defineCollection({

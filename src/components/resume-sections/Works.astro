@@ -16,7 +16,15 @@ const { works } = Astro.props;
     {
       works.map(
         ({
-          data: { name, position, startDate, endDate, website, linkedIn },
+          data: {
+            name,
+            position,
+            startDate,
+            endDate,
+            website,
+            linkedIn,
+            summary,
+          },
         }) => (
           <li>
             <article>
@@ -29,6 +37,7 @@ const { works } = Astro.props;
               </header>
               <main>
                 <h4>{position}</h4>
+                {summary ? <p>{summary}</p> : ""}
               </main>
               {website || linkedIn ? (
                 <footer>
