@@ -17,7 +17,7 @@ const githubUrl = "https://github.com/pablocru/" + repository;
           {
             socialLinks.map(({ data: { url, network } }) => (
               <li>
-                <IconLink href={url} iconName={network} anchorText={network} />
+                <IconLink href={url} iconName={network} />
               </li>
             ))
           }

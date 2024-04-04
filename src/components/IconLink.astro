@@ -3,10 +3,15 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
   iconName: string;
-  anchorText: string;
+  anchorText?: string;
 }
 
-const { iconName, anchorText, class: className, ...props } = Astro.props;
+const {
+  iconName,
+  anchorText = iconName,
+  class: className,
+  ...props
+} = Astro.props;
 
 async function getIcon(iconName: string) {
   const icons = await Astro.glob("@components/icons/*.astro");
