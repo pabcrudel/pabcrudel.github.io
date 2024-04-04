@@ -19,12 +19,14 @@ const educationCollection = await getEntries(education);
 
 <BaseLayout>
   <header id="hero">
-    <CustomPicture
-      src={tradeMark}
-      widths={[250, 300]}
-      alt="Pablo Cru's personal brand trademark"
-      loading="eager"
-    />
+    <aside id="heroImage">
+      <CustomPicture
+        src={tradeMark}
+        widths={[250, 300]}
+        alt="Pablo Cru's personal brand trademark"
+        loading="eager"
+      />
+    </aside>
     <section>
       <header>
         <h1>Pablo Cru Delhom</h1>
@@ -84,17 +86,9 @@ const educationCollection = await getEntries(education);
   }
   /* Styles applied to smaller screens */
   @media screen and (max-width: 700px) {
-    /*
-      Set repeated and then override it because of Astro css scopes.
-      As the picture tag is an Astro component, css styles are attached to this component.
-      So I only be able to center the image this way. If you found a better approach,
-      please open a issue on GitHub: https://github.com/pablocru/pablocru.github.io/issues
-    */
-    header#hero {
+    /* Center image */
+    header#hero aside#heroImage {
       text-align: center;
-    }
-    header#hero section {
-      text-align: initial;
     }
   }
   @supports (display: flex) {
