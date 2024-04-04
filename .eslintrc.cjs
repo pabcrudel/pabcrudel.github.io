@@ -31,7 +31,8 @@ module.exports = {
       anonymous: "always",
       named: "never",
       asyncArrow: "always"
-    }]
+    }],
+    "multiline-ternary": ["error", "never"]
   },
   ignorePatterns: ["env.d.ts"],
 };
