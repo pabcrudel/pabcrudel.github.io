@@ -19,39 +19,41 @@ const { projects } = Astro.props;
             <article>
               <header>
                 <h3>{name}</h3>
-                {sourceCode
-                  ? (
-                  <IconLink
-                    href={sourceCode}
-                    iconName="GitHub"
-                    anchorText="Source Code"
-                  />
-                    )
-                  : (
-                      ""
-                    )}
-                {preview
-                  ? (
-                  <IconLink
-                    href={preview}
-                    iconName="Rocket"
-                    anchorText="Preview"
-                  />
-                    )
-                  : (
-                      ""
-                    )}
               </header>
-              <main>
-                <p>{description}</p>
-              </main>
-              <footer>
+              <aside>
                 <ul class="tags">
                   {highlights.map((tag) => (
                     <li class="tag">{tag}</li>
                   ))}
                 </ul>
-              </footer>
+              </aside>
+              <main>
+                <p>{description}</p>
+              </main>
+              {sourceCode || preview ? (
+                <footer>
+                  {sourceCode ? (
+                    <IconLink
+                      href={sourceCode}
+                      iconName="GitHub"
+                      anchorText="Source Code"
+                    />
+                  ) : (
+                    ""
+                  )}
+                  {preview ? (
+                    <IconLink
+                      href={preview}
+                      iconName="Rocket"
+                      anchorText="Preview"
+                    />
+                  ) : (
+                    ""
+                  )}
+                </footer>
+              ) : (
+                ""
+              )}
             </article>
           </li>
         )
