@@ -65,7 +65,8 @@ export const collections = {
       name: z.string(),
       description: z.string(),
       highlights: z.array(z.string()),
-      url: z.string().url(),
+      sourceCode: z.string().nullable(),
+      preview: z.string().nullable()
     }),
   }),
 };
