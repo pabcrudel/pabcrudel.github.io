@@ -1,5 +1,5 @@
 ---
-import FormattedDate from "../FormattedDate.astro";
+import DateRange from "./DateRange.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -20,11 +20,7 @@ const { education } = Astro.props;
               <h3>
                 {area} at <a href={url}>{institution}</a>
               </h3>
-              <p>
-                <FormattedDate date={startDate} />
-                -
-                <FormattedDate date={endDate} />
-              </p>
+              <DateRange startDate={startDate} endDate={endDate}/>
               <p>{studyType}</p>
             </article>
           </li>

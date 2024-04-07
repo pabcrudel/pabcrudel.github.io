@@ -1,6 +1,6 @@
 ---
 import { marked } from "marked";
-import FormattedDate from "../FormattedDate.astro";
+import DateRange from "./DateRange.astro";
 import IconLink from "../IconLink.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -31,10 +31,7 @@ const { works } = Astro.props;
             <article>
               <header>
                 <h3>{name}</h3>
-                <p>
-                  <FormattedDate date={startDate} /> -
-                  {endDate ? <FormattedDate date={endDate} /> : "Currently"}
-                </p>
+                <DateRange startDate={startDate} endDate={endDate}/>
               </header>
               <main>
                 <h4>{position}</h4>

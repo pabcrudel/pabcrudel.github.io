@@ -1,0 +1,27 @@
+---
+import Calendar from "../icons/Calendar.astro";
+import FormattedDate from "../FormattedDate.astro";
+
+interface Props {
+  startDate: Date;
+  endDate: Date | null;
+}
+
+const { startDate, endDate } = Astro.props;
+---
+
+<aside class="dateRange">
+  <Calendar />
+  <FormattedDate date={startDate} /> -
+  {endDate ? <FormattedDate date={endDate} /> : "Currently"}
+</aside>
+
+<style>
+  svg {
+    /* Align the icon with the top line of the dates */
+    vertical-align: top;
+
+    /* Leave space between the icon and the dates */
+    margin-right: 0.3em;
+  }
+</style>
