@@ -116,6 +116,7 @@ const educationCollection = await getEntries(education);
   .chronological ul {
     /* Add a vertical line aligned with the bullet points */
     padding-left: 1em;
+    padding-block: 0.5em;
     border-left: 1px solid;
 
     /* Bullet points starts at the same vertical line that other content */
@@ -125,6 +126,10 @@ const educationCollection = await getEntries(education);
     /* Increase space between items */
     margin-bottom: 3em;
   }
+  .chronological li:last-child {
+    /* Add space at the end that is equal to the base font size */
+    margin-bottom: 1em;
+  }
   .chronological li::marker {
     /* Increase bullet point size */
     font-size: 1.5em;
@@ -133,15 +138,19 @@ const educationCollection = await getEntries(education);
     /* Remove space between heading and date */
     margin-bottom: 0;
   }
+  .chronological h3:first-of-type {
+    /* Remove top space of the first item's heading */
+    margin-top: 0;
+  }
   .chronological h4 {
     /* Reduce space between heading and content */
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
-  .chronological p {
-    /* Same as before */
-    margin-top: 0;
-
+  .chronological .dateRange {
     /* Reduce date font size because is less important than other information */
     font-size: smaller;
+
+    /* Reduce paragraph's default margin to by half the main font size */
+    margin-block: 0.2em;
   }
 </style>
