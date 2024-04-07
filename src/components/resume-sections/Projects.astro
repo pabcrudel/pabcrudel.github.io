@@ -1,4 +1,5 @@
 ---
+import { marked } from "marked";
 import IconLink from "@components/IconLink.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -27,9 +28,7 @@ const { projects } = Astro.props;
                   ))}
                 </ul>
               </aside>
-              <main>
-                <p>{description}</p>
-              </main>
+              <main set:html={marked.parse(description)} />
               {sourceCode || preview ? (
                 <footer>
                   {sourceCode ? (

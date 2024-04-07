@@ -1,4 +1,5 @@
 ---
+import { marked } from "marked";
 import FormattedDate from "../FormattedDate.astro";
 import IconLink from "../IconLink.astro";
 import type { CollectionEntry } from "astro:content";
@@ -37,7 +38,7 @@ const { works } = Astro.props;
               </header>
               <main>
                 <h4>{position}</h4>
-                {summary ? <p>{summary}</p> : ""}
+                {summary ? <Fragment set:html={marked.parse(summary)} /> : ""}
               </main>
               {website || linkedIn ? (
                 <footer>
